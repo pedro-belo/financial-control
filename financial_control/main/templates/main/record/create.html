@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-4 px-0">
+
+    <header class="text-center">
+        <h1 class="h2 font-primary">
+            Nova Conta
+        </h1>
+        <p>
+            <a class="font-secondary text-dark" href="{% url 'main:record-detail' pk=view.kwargs.parent_id %}">{{view.get_parent.name}}</a>
+        </p>
+    </header>
+
+    <hr class="pb-1 bg-primary rounded-pill">
+
+    <form method="post" style="max-width: 400px;" class="font-secondary mx-auto">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="{{form.name.id_for_label}}" class="form-label">Nome</label>
+            {{form.name}}
+            <div class="font-secondary form-text">Nome da sua conta que será adicionada a <strong><a class="text-dark"
+                        href="{% url 'main:record-detail' pk=view.kwargs.parent_id %}">{{view.get_parent.name}}</a></strong>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

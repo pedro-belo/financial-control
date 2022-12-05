@@ -1,0 +1,111 @@
+<div class="table-responsive">
+    <table id="record-entries" class="table table-hover">
+
+        <thead>
+            <tr>
+                <th>Items</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for entry in record.record_entry.all %}
+            <tr>
+                <td class="p-0 pb-1">
+                    <div class="m-0 accordion" id="accordion-record-entries">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading-entry-{{entry.id}}">
+                                <button class="accordion-button collapsed py-2 bg-light border-light rounded-0" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapse-entry-{{entry.id}}"
+                                    aria-expanded="true" aria-controls="collapse-entry-{{entry.id}}">
+                                    {{entry.name}}
+                                </button>
+                            </h2>
+                            <div id="collapse-entry-{{entry.id}}" class="accordion-collapse collapse"
+                                aria-labelledby="heading-entry-{{entry.id}}" data-bs-parent="#accordion-record-entries">
+                                <div class="accordion-body bg-white m-0 p-0">
+                                    <div class="container-fluid shadow-sm">
+                                        <div class="row">
+                                            <div class="col py-1">
+                                                <div class="row">
+                                                    <div class="row">
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Janeiro</p>
+                                                            <p class="m-0">{{entry.january}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Fevereiro</p>
+                                                            <p class="m-0">{{entry.february}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Março</p>
+                                                            <p class="m-0">{{entry.march}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Abril</p>
+                                                            <p class="m-0">{{entry.april}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Maio</p>
+                                                            <p class="m-0">{{entry.may}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Junho</p>
+                                                            <p class="m-0">{{entry.june}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Julho</p>
+                                                            <p class="m-0">{{entry.july}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Agosto</p>
+                                                            <p class="m-0">{{entry.august}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Setembro</p>
+                                                            <p class="m-0">{{entry.september}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Outubro</p>
+                                                            <p class="m-0">{{entry.octuber}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Novembro</p>
+                                                            <p class="m-0">{{entry.november}}</p>
+                                                        </div>
+                                                        <div class="col-3 text-center">
+                                                            <p class="fw-bold text-primary m-0">Dezembro</p>
+                                                            <p class="m-0">{{entry.december}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <h3 class="font-primary">
+                                                    <a class="text-dark" href="{% url 'main:record-entry-edit' pk=entry.id %}">{{entry.name}}</a>
+                                                </h3>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <p class="font-primary text-primary">Ano: <span class="font-secondary text-dark">{{entry.year}}</span></p>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <p class="font-primary text-primary">Soma Anual: <span class="font-secondary text-dark">{{entry.annual_sum}}</span></p>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <p class="font-primary text-primary">Média Mensal: <span class="font-secondary text-dark">{{entry.annual_sum}}</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,88 @@
+<!--
+    
+    args:
+        entries : Set[RecordEntry]
+
+{# closecomment #}
+-->
+
+<div class="table-responsive">
+    <table class="table table-hover text-dark bg-primary bg-opacity-25 rounded">
+
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Jan.</th>
+                <th>Fev.</th>
+                <th>Março</th>
+                <th>Abril</th>
+                <th>Maio</th>
+                <th>Junio</th>
+                <th>Julho</th>
+                <th>Agosto</th>
+                <th>Set.</th>
+                <th>Out.</th>
+                <th>Nov.</th>
+                <th>Dez.</th>
+                <th>Total</th>
+                <th>Media</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>
+                    <a class="text-decoration-none text-dark"
+                        href="{% url 'main:record-entry-edit' pk=entry.id %}">{{entry.name}}</a>
+                </td>
+                <td>{{entry.january}}</td>
+                <td>{{entry.february}}</td>
+                <td>{{entry.march}}</td>
+                <td>{{entry.april}}</td>
+                <td>{{entry.may}}</td>
+                <td>{{entry.june}}</td>
+                <td>{{entry.july}}</td>
+                <td>{{entry.august}}</td>
+                <td>{{entry.september}}</td>
+                <td>{{entry.octuber}}</td>
+                <td>{{entry.november}}</td>
+                <td class="border-0 border-info border-end">{{entry.december}}</td>
+                <td class="border-0 border-info border-end"><strong>{{entry.annual_sum}}</strong></td>
+                <td class=""><strong>{{entry.mean}}</strong></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Nenhuma registro</td>
+            </tr>
+            {% endfor %}
+
+            {% if entries.count > 0 %}
+
+            <tr class="bg-info bg-tranparent-10">
+                <td class="text-center"><strong>∑</strong></td>
+                <td><strong>{{record.january_sum}}</strong></td>
+                <td><strong>{{record.february_sum}}</strong></td>
+                <td><strong>{{record.march_sum}}</strong></td>
+                <td><strong>{{record.april_sum}}</strong></td>
+                <td><strong>{{record.may_sum}}</strong></td>
+                <td><strong>{{record.june_sum}}</strong></td>
+                <td><strong>{{record.july_sum}}</strong></td>
+                <td><strong>{{record.august_sum}}</strong></td>
+                <td><strong>{{record.september_sum}}</strong></td>
+                <td><strong>{{record.octuber_sum}}</strong></td>
+                <td><strong>{{record.november_sum}}</strong></td>
+                <td><strong>{{record.december_sum}}</strong></td>
+                <td><strong>{{record.annual_sum}}</strong></td>
+                <td><strong>{{record.annual_mean}}</strong></td>
+            </tr>
+            {% endif %}
+
+        </tbody>
+        <caption>
+            {% if record.parent is not None %}
+            <p>Soma: <span class="badge bg-info bg-tranparent-25">{{record.total}}</span></p>
+            {% endif %}
+        </caption>
+    </table>
+</div>

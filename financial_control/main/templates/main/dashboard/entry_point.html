@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block style %}
+    {{block.super}}
+    <link href="{% static '/node_modules/datatables.net-dt/css/jquery.dataTables.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav nav-tabs font-primary" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active " id="main-tab" data-bs-toggle="tab" data-bs-target="#main" type="button"
+            role="tab" aria-controls="main" aria-selected="true">Principal</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="expenses-tab" data-bs-toggle="tab" data-bs-target="#expenses" type="button"
+            role="tab" aria-controls="expenses" aria-selected="false">Despesas</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="incomes-tab" data-bs-toggle="tab" data-bs-target="#incomes" type="button"
+            role="tab" aria-controls="incomes" aria-selected="false">Ganhos</button>
+    </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="main" role="tabpanel" aria-labelledby="main-tab">
+        {% include "./main.html" %}
+    </div>
+
+    <div class="tab-pane fade" id="expenses" role="tabpanel" aria-labelledby="expenses-tab">
+        {% include "./expenses.html" %}
+    </div>
+
+    <div class="tab-pane fade" id="incomes" role="tabpanel" aria-labelledby="incomes-tab">
+        {% include "./incomes.html" %}
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{block.super}}
+<script type="text/javascript" src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/node_modules/datatables.net-dt/js/dataTables.dataTables.min.js' %}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="{% static '/node_modules/chart.js/dist/chart.umd.js' %}"></script>
+<script>
+
+    $(document).ready(function () {
+        $('#table_expense_id').DataTable({
+            language: datatable_translation
+        });
+    });
+
+    $(document).ready(function () {
+        $('#table_income_id').DataTable({
+            language: datatable_translation
+        });
+    });
+
+    const expenseVsIncomeElm = document.getElementById('expense_x_income');
+    new Chart(expenseVsIncomeElm, {
+        type: 'line',
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Setembro", "Outubro"],
+            datasets: [{
+                label: 'Ganho',
+                borderColor: "#04F06A",
+                data: [
+                    Number("{{income.sum.month.sum_january}}"),
+                    Number("{{income.sum.month.sum_february}}"),
+                    Number("{{income.sum.month.sum_march}}"),
+                    Number("{{income.sum.month.sum_april}}"),
+                    Number("{{income.sum.month.sum_may}}"),
+                    Number("{{income.sum.month.sum_june}}"),
+                    Number("{{income.sum.month.sum_july}}"),
+                    Number("{{income.sum.month.sum_august}}"),
+                    Number("{{income.sum.month.sum_september}}"),
+                    Number("{{income.sum.month.sum_octuber}}"),
+                    Number("{{income.sum.month.sum_november}}"),
+                    Number("{{income.sum.month.sum_december}}")
+                ],
+                borderWidth: 1.8
+            }, {
+                label: 'Despesa',
+                borderColor: '#FB3640',
+                data: [
+                    Number("{{expense.sum.month.sum_january}}"),
+                    Number("{{expense.sum.month.sum_february}}"),
+                    Number("{{expense.sum.month.sum_march}}"),
+                    Number("{{expense.sum.month.sum_april}}"),
+                    Number("{{expense.sum.month.sum_may}}"),
+                    Number("{{expense.sum.month.sum_june}}"),
+                    Number("{{expense.sum.month.sum_july}}"),
+                    Number("{{expense.sum.month.sum_august}}"),
+                    Number("{{expense.sum.month.sum_september}}"),
+                    Number("{{expense.sum.month.sum_octuber}}"),
+                    Number("{{expense.sum.month.sum_november}}"),
+                    Number("{{expense.sum.month.sum_december}}")
+                ],
+                borderWidth: 1.8
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const expenseElm = document.getElementById('graph_expenses');
+    new Chart(expenseElm, {
+        type: 'bar',
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Setembro", "Outubro"],
+            datasets: [{
+                label: 'Expenses',
+                borderColor: "#f20089",
+                backgroundColor: "rgba(242, 0, 137, 0.3)",
+                data: [
+                    Number("{{expense.sum.month.sum_january}}"),
+                    Number("{{expense.sum.month.sum_february}}"),
+                    Number("{{expense.sum.month.sum_march}}"),
+                    Number("{{expense.sum.month.sum_april}}"),
+                    Number("{{expense.sum.month.sum_may}}"),
+                    Number("{{expense.sum.month.sum_june}}"),
+                    Number("{{expense.sum.month.sum_july}}"),
+                    Number("{{expense.sum.month.sum_august}}"),
+                    Number("{{expense.sum.month.sum_september}}"),
+                    Number("{{expense.sum.month.sum_octuber}}"),
+                    Number("{{expense.sum.month.sum_november}}"),
+                    Number("{{expense.sum.month.sum_december}}")
+                ],
+                borderWidth: 1.8
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const incomeElm = document.getElementById('graph_incomes');
+    new Chart(incomeElm, {
+        type: 'bar',
+        data: {
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Setembro", "Outubro"],
+            datasets: [{
+                label: 'Expenses',
+                borderColor: "#85BB65",
+                backgroundColor: "rgba(133, 187, 101, 0.3)",
+                data: [
+                    Number("{{income.sum.month.sum_january}}"),
+                    Number("{{income.sum.month.sum_february}}"),
+                    Number("{{income.sum.month.sum_march}}"),
+                    Number("{{income.sum.month.sum_april}}"),
+                    Number("{{income.sum.month.sum_may}}"),
+                    Number("{{income.sum.month.sum_june}}"),
+                    Number("{{income.sum.month.sum_july}}"),
+                    Number("{{income.sum.month.sum_august}}"),
+                    Number("{{income.sum.month.sum_september}}"),
+                    Number("{{income.sum.month.sum_octuber}}"),
+                    Number("{{income.sum.month.sum_november}}"),
+                    Number("{{income.sum.month.sum_december}}")
+                ],
+                borderWidth: 1.8
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+</script>
+
+{% endblock %}

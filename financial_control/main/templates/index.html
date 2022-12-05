@@ -1,0 +1,66 @@
+<!-- {% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="h2 bg-info text-center py-2">{{record.name}}</h1>
+
+<div class="row p-2 m-0 p-0">
+
+    <div class="col-3 align-self-start">
+
+        {% if record.parent %}
+        <div class="d-grid gap-2">
+            <a class="btn btn-primary btn-sm btn-block" href="{% url 'core:record-list' pk=record.parent.pk %}">Voltar</a>
+        </div>
+        {% endif %}
+
+        <ul class="nav justify-content-center flex-column">
+            {% for parent in record.parent_record.all %}
+            <li class="nav-item my-1">
+                <a class="nav-link d-flex text-dark justify-content-between" aria-current="page"
+                    href="{% url 'core:record-list' pk=parent.pk %}">{{parent.name}}
+                    <span class="badge bg-primary bg-opacity-25 text-dark rounded">{{parent.total}}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="col-9">
+
+        <table class="table table-hover text-dark bg-primary bg-opacity-25 rounded">
+
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for entry in record.record_entry.all %}
+                <tr>
+                    <td>
+                        <a class="text-decoration-none text-dark" href="{% url 'core:record-entry-edit' pk=entry.id %}">{{entry.name}}</a>
+                    </td>
+                    <td>{{entry.value}}</td>
+                    <td>{{entry.date}}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Nenhuma registro</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <caption>
+                {% if record.parent is not None %}
+                <p>Soma: <span class="badge bg-info bg-tranparent-25">{{record.total}}</span></p>
+                {% endif %}
+            </caption>
+        </table>
+
+    </div>
+
+</div>
+{% endblock %} -->

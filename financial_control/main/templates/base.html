@@ -1,0 +1,59 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    {% block style %}
+    <link href="{% static '/node_modules/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/node_modules/material-icons/iconfont/material-icons.css' %}" rel="stylesheet">
+    {% endblock %}
+
+    <link href="{% static '/custom/main.css' %}" rel="stylesheet">
+
+    <title>...</title>
+
+    {% endblock %}
+</head>
+
+<body class="font-secondary bg-light">
+    {% block body %}
+
+    <div class="container bg-white shadow px-0 rounded min-vh-100">
+
+        <header>
+            {% block header %}
+
+            {% block navbar %}
+            {% include "./navbar.html" %}
+            {% endblock %}
+
+            {% endblock %}
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+    </div>
+
+    {% block scripts %}
+
+    {% include "datatable_translation.html" %}
+    <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    {% endblock %}
+
+    {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<h2 class="font-primary bg-secondary bg-opacity-25 text-center text-dark shadow-sm bg-gradient h3 py-4 mb-4">{{title}}</h2>
+
+<div class="row">
+
+
+    <div class="col-sm-12 col-md-6">
+
+        <div class="row text-center">
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Janeiro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_january}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Fevereiro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_february}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Março</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_march}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Abril</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_april}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Maio</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_may}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Junho</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_june}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Julho</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_july}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Agosto</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_august}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Setembro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_september}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Outubro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_octuber}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Novembro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_november}}</p>
+            </div>
+
+            <div class="col-3 col-sm-3 col-md-4">
+                <p class="fw-bold fs-5 text-secondary m-0">Dezembro</p>
+                <p class="fw-bold {% if is_income %}text-success{% else %}text-danger{% endif %}">{{month_sum.sum_december}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-sm-12 col-md-6">
+        <canvas class="w-100" style="min-height: 320px;" id="{{elm_name}}"></canvas>
+    </div>
+
+</div>

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block style %}
+{{block.super}}
+<link href="{% static '/node_modules/datatables.net-dt/css/jquery.dataTables.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<ul class="nav justify-content-end my-1">
+
+    {% if record.parent %}
+    <li class="nav-item">
+        <a class="btn btn-sm btn-primary text-white mx-1" title="Voltar"
+            href="{% url 'main:record-detail' pk=record.parent.pk %}"><span
+                class="material-icons-outlined">chevron_left</span></a>
+    </li>
+    {% endif %}
+
+    <li class="nav-item">
+        <a class="btn btn-sm btn-primary text-white mx-1" title="Nova Conta"
+            href="{% url 'main:record-create' parent_id=record.pk %}"><span
+                class="material-icons-outlined">create_new_folder</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="btn btn-sm btn-primary text-white mx-1" title="Editar Conta"
+            href="{% url 'main:record-edit' pk=record.pk %}"><span class="material-icons-outlined">settings</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="btn btn-sm btn-primary text-white mx-1" title="Nova Entrada"
+            href="{% url 'main:record-entry-create' parent_id=record.pk %}"><span
+                class="material-icons-outlined">add</span></a>
+    </li>
+
+</ul>
+
+<h1 class="font-primary bg-secondary bg-opacity-25 text-center text-dark shadow-sm bg-gradient h3 py-4 mb-4">{{record.name}}</h1>
+
+<div class="font-secondary row p-2 m-0 p-0">
+
+    {% if record.parent_record.count > 0 %}
+    <div class="col-3 align-self-start">
+
+        <ul class="nav justify-content-center flex-column">
+            {% for parent in record.parent_record.all %}
+            <li class="nav-item my-1 bg-light shadow-sm">
+                <a class="nav-link d-flex text-dark justify-content-between" aria-current="page"
+                    href="{% url 'main:record-detail' pk=parent.pk %}">{{parent.name}}
+                    <span class="badge bg-primary bg-opacity-25 text-white rounded">{{parent.records_count}}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <div class="col">
+        {% include "./table_entries_snippet.html" %}
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{{block.super}}
+<script type="text/javascript" src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/node_modules/datatables.net-dt/js/dataTables.dataTables.min.js' %}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#record-entries').DataTable({
+            language: datatable_translation
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,17 @@
+.btn-primary,
+.bg-primary {
+    background-color: #2D00F7 !important;
+}
+
+.text-primary {
+    color: #2D00F7 !important;
+}
+
+
+.font-primary {
+    font-family: 'Inconsolata', monospace;
+}
+
+.font-secondary {
+    font-family: 'Nunito', sans-serif;
+}

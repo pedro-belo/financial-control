@@ -1,0 +1,85 @@
+<div class="table-responsive px-2">
+    
+    <table id="table_{{name}}_id" class="table">
+
+        <thead>
+            <tr>
+                <th>Items</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+            <td class="p-0">
+                <div class="accordion accordion-flush" id="accordion-entry-{{entry.id}}">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="flush-heading-entry-{{entry.id}}">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-entry-{{entry.id}}" aria-expanded="false" aria-controls="flush-collapse-entry-{{entry.id}}">
+                          {{entry.name}}
+                        </button>
+                      </h2>
+                      <div id="flush-collapse-entry-{{entry.id}}" class="accordion-collapse collapse mb-1" aria-labelledby="flush-heading-entry-{{entry.id}}" data-bs-parent="#accordion-entry-{{entry.id}}">
+                        <div class="accordion-body">
+                            <div class="row text-center">
+                                <div class="col">
+                                    <p class="m-0">Janeiro</p>
+                                    <p>{{entry.january}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Fevereiro</p>
+                                    <p>{{entry.february}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Março</p>
+                                    <p>{{entry.march}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Abril</p>
+                                    <p>{{entry.april}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Maio</p>
+                                    <p>{{entry.may}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Junho</p>
+                                    <p>{{entry.june}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Julho</p>
+                                    <p>{{entry.july}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Agosto</p>
+                                    <p>{{entry.august}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Setembro</p>
+                                    <p>{{entry.september}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Outubro</p>
+                                    <p>{{entry.octuber}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Novembro</p>
+                                    <p>{{entry.november}}</p>
+                                </div>
+                                <div class="col">
+                                    <p class="m-0">Dezembro</p>
+                                    <p>{{entry.december}}</p>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>                
+            </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+

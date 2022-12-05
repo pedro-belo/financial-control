@@ -1,0 +1,13 @@
+<div class="container-fluid px-0">
+
+    {% include "./graph_month_snippet.html" with title="Total de Gastos Mensais" month_sum=expense.sum.month elm_name="graph_expenses" only %}
+
+    <div class="bg-secondary pb-1 my-2"></div>
+
+    <div class="row mt-2">
+        <div class="col">
+            {% include "./entries_table_snippet.html" with entries=expense.entries name="expense" %}
+        </div>
+    </div>
+
+</div>

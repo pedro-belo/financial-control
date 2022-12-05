@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-4 px-0">
+
+    <header class="text-center">
+        <h1 class="font-primary h2">
+            Edição de Conta
+        </h1>
+        <p>
+            <a class="font-secondary text-dark"
+                href="{% url 'main:record-detail' pk=view.get_object.id %}">{{view.get_object.name}}</a>
+        </p>
+    </header>
+
+    <hr class="pb-1 bg-primary rounded-pill">
+
+    <form method="post" style="max-width: 400px;" class="font-secondary mx-auto">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="{{form.name.id_for_label}}" class="form-label">Nome</label>
+            {{form.name}}
+            <div class="font-secondary form-text">
+                Novo nome para <strong>
+                    <a class="text-dark" href="{% url 'main:record-detail' pk=view.get_object.id %}">
+                        {{view.get_object.name}}
+                    </a>
+                </strong>
+            </div>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit">Salvar</button>
+            <a class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-record">Remover</a>
+        </div>
+    </form>
+</div>
+
+<div class="modal" tabindex="-1" id="delete-record">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar remoção ?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% if view.get_object.parent_record.count < 1 %} <p>Tem certeza que deseja a conta
+                    <strong>{{view.get_object.name}}</strong> ?</p>
+                    {% else %}
+
+                    <p class="text-danger">
+                        Existem outras contas associadas a <u>{{view.get_object.name}}</u> que também serão removidas.
+                        <strong>Deseja realmente continuar ?</strong>
+                    </p>
+
+                    <ul>
+                        {% for i in view.get_object.parent_record.all %}
+
+                        <li>{{i.name}}</li>
+
+                        {% endfor %}
+                    </ul>
+
+                    {% endif %}
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <form method="post" action="{% url 'main:record-delete' pk=view.get_object.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Continuar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
