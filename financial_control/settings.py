@@ -29,6 +29,7 @@ DEBUG = config("DEBUG", cast=bool, default=False)
 
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", cast=Csv(), default="127.0.0.1")
 
+USE_DEV_APPS = config("USE_DEV_APPS", cast=bool, default=False) and DEBUG
 
 # Application definition
 INSTALLED_APPS = [
@@ -44,6 +45,9 @@ INSTALLED_APPS = [
     "financial_control.main",
     "financial_control.users",
 ]
+
+if USE_DEV_APPS:
+    INSTALLED_APPS.append("django_extensions")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -87,12 +91,12 @@ db_sqlite = {
 }
 
 db_postgres = {
-    'ENGINE': 'django.db.backends.postgresql',
-    'NAME': config("PGDATABASE", default=""),
-    'USER': config("PGUSER", default=""),
-    'PASSWORD': config("PGPASSWORD", default=""),
-    'HOST': config("PGHOST", default=""),
-    'PORT': config("PGPORT", default=""),
+    "ENGINE": "django.db.backends.postgresql",
+    "NAME": config("PGDATABASE", default=""),
+    "USER": config("PGUSER", default=""),
+    "PASSWORD": config("PGPASSWORD", default=""),
+    "HOST": config("PGHOST", default=""),
+    "PORT": config("PGPORT", default=""),
 }
 
 DATABASES = dict()
@@ -144,6 +148,8 @@ CLOUDINARY_STORAGE = {
     "API_SECRET": config("API_SECRET", ""),
 }
 
+STATICFILES_STORAGE = "cloudinary_storage.storage.StaticHashedCloudinaryStorage"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -152,3 +158,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_URL = "users:login"
 LOGIN_REDIRECT_URL = "main:dashboard"
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", cast=Csv(), default=[])
