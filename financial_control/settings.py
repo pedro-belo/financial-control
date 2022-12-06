@@ -81,13 +81,22 @@ AUTH_USER_MODEL = "users.User"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+db_sqlite = {
+    "ENGINE": "django.db.backends.sqlite3",
+    "NAME": BASE_DIR / "db.sqlite3",
 }
 
+db_postgres = {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': config("PGDATABASE", default=""),
+    'USER': config("PGUSER", default=""),
+    'PASSWORD': config("PGPASSWORD", default=""),
+    'HOST': config("PGHOST", default=""),
+    'PORT': config("PGPORT", default=""),
+}
+
+DATABASES = dict()
+DATABASES["default"] = db_sqlite if DEBUG else db_postgres
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -130,9 +139,9 @@ STATIC_URL = config("STATIC_URL", default="/static/")
 STATICFILES_DIRS = ["static/"]
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': config("CLOUD_NAME", ""),
-    'API_KEY': config("API_KEY", ""),
-    'API_SECRET': config("API_SECRET", "")
+    "CLOUD_NAME": config("CLOUD_NAME", ""),
+    "API_KEY": config("API_KEY", ""),
+    "API_SECRET": config("API_SECRET", ""),
 }
 
 # Default primary key field type
