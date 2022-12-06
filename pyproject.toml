@@ -7,11 +7,12 @@ authors = ["Pedro Belo <pedrobelo.na@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^4.1.3"
-black = "^22.10.0"
 python-decouple = "^3.6"
+django-cloudinary-storage = "^0.3.0"
 
 [tool.poetry.dev-dependencies]
 django-extensions = "^3.2.1"
+black = "^22.10.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

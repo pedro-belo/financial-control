@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "cloudinary_storage",
     "django.contrib.staticfiles",
+    "cloudinary",
     "django_extensions",
     "financial_control.main",
     "financial_control.users",
@@ -121,9 +123,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_ROOT = config("STATIC_ROOT", default=(BASE_DIR / "staticfiles/"))
+
+STATIC_URL = config("STATIC_URL", default="/static/")
 
 STATICFILES_DIRS = ["static/"]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config("CLOUD_NAME", ""),
+    'API_KEY': config("API_KEY", ""),
+    'API_SECRET': config("API_SECRET", "")
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
