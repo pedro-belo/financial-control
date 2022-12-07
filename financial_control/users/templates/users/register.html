@@ -1,0 +1,39 @@
+{% extends "./form.html" %}
+
+{% block form_title %}
+Cadastro
+{% endblock %}
+
+{% block form_fields %}
+
+<div class="mb-3">
+    <label for="{{form.username.id_for_label}}" class="form-label">Usuário</label>
+    {{form.username}}
+
+    {% for error in form.username.errors %}
+    <small class="form-text text-danger">{{error}}</small>
+    {% endfor %}
+
+</div>
+
+<div class="mb-3">
+    <label for="{{form.password1.id_for_label}}" class="form-label">Senha</label>
+    {{form.password1}}
+    {% for error in form.password1.errors %}
+    <small class="form-text text-danger">{{error}}</small>
+    {% endfor %}
+</div>
+
+<div class="mb-3">
+    <label for="{{form.password2.id_for_label}}" class="form-label">Confirme a senha</label>
+    {{form.password2}}
+    {% for error in form.password2.errors %}
+    <small class="form-text text-danger">{{error}}</small>
+    {% endfor %}
+</div>
+
+{% endblock %}
+
+{% block button_redirect %}
+<a class="btn btn-link text-dark" href="{% url 'users:login' %}">Login</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "users/base.html" %}
+
+{% block form %}
+
+<h1 class="h3 font-primary fw-bold text-center pb-2 pt-3 mt-4">
+    {% block form_title %}
+    {% endblock %}
+</h1>
+
+<form class="px-4" method="post">
+
+    {% for error in form.non_field_errors %}
+    <div class="my-1 alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
+    {% csrf_token %}
+
+    {% block form_fields %}
+    {% endblock %}
+
+    <div class="mb-3">
+        <button type="submit" class="fw-bold btn bg-primary text-light shadow-sm w-100">
+            Continuar
+        </button>
+    </div>
+
+    <div class="mb-3 text-center my-2">
+        {% block button_redirect %}{% endblock %}
+    </div>
+
+</form>
+
+{% endblock %}
