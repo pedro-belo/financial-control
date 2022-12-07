@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     "cloudinary_storage",
     "django.contrib.staticfiles",
     "cloudinary",
-    "django_extensions",
     "financial_control.main",
     "financial_control.users",
 ]
