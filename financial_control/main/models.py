@@ -22,6 +22,10 @@ class Record(models.Model):
         blank=True,
     )
 
+    @property
+    def is_root(self):
+        return self.parent is None
+
     def records_count(self):
         return self.parent_record.count() + self.record_entry.count()
 
@@ -29,10 +33,6 @@ class Record(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = RecordManager()
-
-    @property
-    def total(self):
-        return 0
 
     def january_sum(self):
         return sum([entry.january for entry in self.record_entry.all()])

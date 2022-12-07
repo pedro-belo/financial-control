@@ -1,4 +1,3 @@
-from django.db.models import Sum
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     DetailView,
@@ -14,67 +13,13 @@ from django.urls import reverse
 from django.http import Http404
 
 
-def make_dashboard_data(user, type):
-
-    recordEntries = facade.RecordEntry.objects.get_user_record_entries(
-        user=user
-    ).filter(entry_type=type)
-
-    entriesSum = recordEntries.aggregate(
-        sum_january=Sum("january"),
-        sum_february=Sum("february"),
-        sum_march=Sum("march"),
-        sum_april=Sum("april"),
-        sum_may=Sum("may"),
-        sum_june=Sum("june"),
-        sum_july=Sum("july"),
-        sum_august=Sum("august"),
-        sum_september=Sum("september"),
-        sum_octuber=Sum("octuber"),
-        sum_november=Sum("november"),
-        sum_december=Sum("december"),
-    ) if recordEntries.count() > 0 else {
-        "sum_january": 0, "sum_february": 0, "sum_march": 0,
-        "sum_april": 0, "sum_may": 0, "sum_june": 0,
-        "sum_july": 0, "sum_august": 0, "sum_september": 0,
-        "sum_octuber": 0, "sum_november": 0, "sum_december": 0
-    }
-
-    entriesAnnualSum = sum([entriesSum[k] for k in entriesSum])
-    entriesMean = round(entriesAnnualSum / 12, 2)
-
-    return {
-        "entries": recordEntries,
-        "sum": {
-            "month": entriesSum,
-            "annual": entriesAnnualSum,
-            "mean": entriesMean,
-        },
-    }
-
-
 class DashboardView(LoginRequiredMixin, TemplateView):
 
     template_name = "main/dashboard/entry_point.html"
 
     def get_context_data(self, **kwargs):
         kwargs = super().get_context_data(**kwargs)
-
-        kwargs["expense"] = make_dashboard_data(
-            user=self.request.user, type=facade.RecordEntry.EntryType.EXPENSE
-        )
-
-        kwargs["income"] = make_dashboard_data(
-            user=self.request.user, type=facade.RecordEntry.EntryType.INCOME
-        )
-
-        kwargs["main"] = {
-            "assets": kwargs["income"]["sum"]["annual"],
-            "liabilities": kwargs["expense"]["sum"]["annual"],
-            "equity": kwargs["income"]["sum"]["annual"]
-            - kwargs["expense"]["sum"]["annual"],
-        }
-
+        kwargs["data"] = facade.get_dashboard_data(user=self.request.user)
         return kwargs
 
 

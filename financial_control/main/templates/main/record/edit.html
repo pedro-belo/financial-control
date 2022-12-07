@@ -5,7 +5,7 @@
 <div class="container my-4 px-0">
 
     <header class="text-center">
-        <h1 class="font-primary h2">
+        <h1 class="h2 font-primary">
             Edição de Conta
         </h1>
         <p>
@@ -13,8 +13,6 @@
                 href="{% url 'main:record-detail' pk=view.get_object.id %}">{{view.get_object.name}}</a>
         </p>
     </header>
-
-    <hr class="pb-1 bg-primary rounded-pill">
 
     <form method="post" style="max-width: 400px;" class="font-secondary mx-auto">
 
@@ -34,11 +32,14 @@
 
         <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit">Salvar</button>
+            {% if not view.get_object.is_root %}
             <a class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#delete-record">Remover</a>
+            {% endif %}
         </div>
     </form>
 </div>
 
+{% if not view.get_object.is_root %}
 <div class="modal" tabindex="-1" id="delete-record">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -52,7 +53,8 @@
                     {% else %}
 
                     <p class="text-danger">
-                        Existem outras contas associadas a <u>{{view.get_object.name}}</u> que também serão removidas.
+                        Existem outras contas associadas a <u>{{view.get_object.name}}</u> que também serão
+                        removidas.
                         <strong>Deseja realmente continuar ?</strong>
                     </p>
 
@@ -78,6 +80,6 @@
         </div>
     </div>
 </div>
-
+{% endif %}
 
 {% endblock %}
