@@ -1,53 +1,47 @@
 <div class="container-fluid px-0 pb-4">
 
-    <h2 class="font-primary bg-secondary bg-opacity-25 text-center text-dark shadow-sm bg-gradient h3 py-4 mb-4">Visão Geral</h2>
-
     <div class="row text-center px-2">
-
+    
         <div class="col-12">
-            <h1 class="font-primary fw-bold text-dark my-2 pb-3 pt-1 h4">Valores Totais</h1>
+            <h1 class="h3 font-primary text-center py-4">Visão Geral</h1>            
         </div>
 
         <div class="col-4">
-            <p class="fw-bold fs-5 text-secondary m-0">PATRIMÔNIO</p>
-            {% if main.equity < 0 %}
-                <p class="fw-bold fs-5 text-danger">
-                    <span title="Unidades monetárias" class="badge bg-danger rounded-pill shadow-sm">$</span> {{main.equity}}
+            <p class="fw-bold text-secondary m-0">PATRIMÔNIO</p>
+            {% if overview.equity < 0 %}
+                <p class="fw-bold text-danger">
+                    <span title="Unidades monetárias" class="badge bg-danger rounded-pill shadow-sm">$</span> {{overview.equity}}
                 </p>
             {% else %}
-                <p class="fw-bold fs-5 text-success">
-                    <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{main.equity}}
+                <p class="fw-bold text-success">
+                    <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.equity}}
                 </p>
             {% endif %}
         </div>
+
         <div class="col-4">
-            <p class="font-primary fw-bold fs-5 text-secondary m-0">ATIVO</p>
-            <p class="fw-bold fs-5 text-success">
-                <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{main.assets}}
-            </p>
-        </div>
-        <div class="col-4">
-            <p class="font-primary fw-bold fs-5 text-secondary m-0">PASSIVO</p>
-            <p class="fw-bold fs-5 text-danger">
-                <span title="Unidades monetárias" class="badge bg-danger rounded-pill">$</span> {{main.liabilities}}
+            <p class="font-primary fw-bold text-secondary m-0">ATIVO</p>
+            <p class="fw-bold text-success">
+                <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.assets}}
             </p>
         </div>
 
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <hr class="bg-secondary border-light shadow-bg bg-opacity-50 pb-2">
+        <div class="col-4">
+            <p class="font-primary fw-bold text-secondary m-0">PASSIVO</p>
+            <p class="fw-bold text-danger">
+                <span title="Unidades monetárias" class="badge bg-danger rounded-pill">$</span> {{overview.liabilities}}
+            </p>
         </div>
+
     </div>
 
     <div class="row">
 
         <div class="col-12">
-            <p class="font-primary fw-bold text-dark my-2 pb-3 pt-1 h4 text-center">Ativo x Passivo</p>
+            <p class="fw-bold font-primary text-dark my-2 pb-3 pt-1 h4 text-center">Ativo x Passivo</p>
         </div>
 
-        <div class="col-md-10 offset-md-1">
+        <div class="col-md-10 offset-md-1 p-4 d-flex justify-content-center align-items-center">
             <canvas id="expense_x_income"></canvas>
         </div>
 

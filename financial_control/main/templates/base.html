@@ -21,7 +21,7 @@
 
     <link href="{% static 'custom/main.css' %}" rel="stylesheet">
 
-    <title>...</title>
+    <title>Controle de Finanças - {% block page_title %}{% endblock %}</title>
 
     {% endblock %}
 </head>
@@ -48,8 +48,6 @@
     </div>
 
     {% block scripts %}
-
-    {% include "datatable_translation.html" %}
     <script type="text/javascript" src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     {% endblock %}
 
