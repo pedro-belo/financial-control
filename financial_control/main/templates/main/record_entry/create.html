@@ -8,151 +8,18 @@
         <h1 class="font-primary h2">
             Nova Entrada
         </h1>
-        <p><a class="font-secondary text-dark" href="{% url 'main:record-detail' pk=view.get_parent.id %}">{{view.get_parent.name}}</a>
+        <p>
+            <a class="font-secondary text-dark" href="{% url 'main:record-detail' pk=view.get_parent.id %}">
+                {{view.get_parent.name}}
+            </a>
         </p>
     </header>
-
-    <hr class="pb-1 bg-primary rounded-pill">
 
     <form method="post" style="max-width: 640px;" class="font-secondary mx-auto">
 
         {% csrf_token %}
 
-        <div class="row g-2">
-
-            <div class="col">
-                <label for="{{form.name.id_for_label}}" class="form-label">Nome</label>
-                {{form.name}}
-                <div class="form-text">Nome da entrada que será adicionada a <strong><a class="text-dark"
-                            href="{% url 'main:record-detail' pk=view.get_parent.id %}">{{view.get_parent.name}}</a></strong>
-                </div>
-            </div>
-
-            <div class="col-4">
-                <label for="{{form.year.id_for_label}}" class="form-label">Ano</label>
-                {{form.year}}
-                <div class="form-text">
-                    Ano
-                </div>
-            </div>
-
-            <div class="col-12">
-
-                <label for="{{form.year.id_for_label}}" class="form-label">Tipo</label>
-                {{form.entry_type}}
-                <div class="form-text">
-                    Tipo de entrada
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row mt-2">
-            <div class="col-12">
-                <p class="text-center py-2 h5 m-0">Valores em cada mês</p>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.january}}
-                    <label for="{{form.january.id_for_label}}" class="form-label">Janeiro</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.february}}
-                    <label for="{{form.february.id_for_label}}" class="form-label">Fevereiro</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.march}}
-                    <label for="{{form.march.id_for_label}}" class="form-label">Março</label>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.april}}
-                    <label for="{{form.april.id_for_label}}" class="form-label">Abril</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.may}}
-                    <label for="{{form.may.id_for_label}}" class="form-label">Maio</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.june}}
-                    <label for="{{form.june.id_for_label}}" class="form-label">Junho</label>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.july}}
-                    <label for="{{form.july.id_for_label}}" class="form-label">Julho</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.august}}
-                    <label for="{{form.august.id_for_label}}" class="form-label">Agosto</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.september}}
-                    <label for="{{form.september.id_for_label}}" class="form-label">Setembro</label>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.octuber}}
-                    <label for="{{form.octuber.id_for_label}}" class="form-label">Outubro</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.november}}
-                    <label for="{{form.november.id_for_label}}" class="form-label">Novembro</label>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-4">
-                <div class="form-floating mb-3">
-                    {{form.december}}
-                    <label for="{{form.december.id_for_label}}" class="form-label">Dezembro</label>
-                </div>
-            </div>
-
-        </div>
+        {% include "./form.html" %}
 
         <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit">Salvar</button>
