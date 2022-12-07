@@ -77,7 +77,7 @@ Contas
 <script type="text/javascript" src="{% static 'node_modules/jquery/dist/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'node_modules/datatables.net/js/jquery.dataTables.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'node_modules/datatables.net-dt/js/dataTables.dataTables.min.js' %}"></script>
-
+{% include "datatable_translation.html" %}
 <script>
     $(document).ready(function () {
         $('#record-entries').DataTable({
