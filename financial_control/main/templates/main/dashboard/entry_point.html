@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load l10n %}
 {% load static %}
 
 {% block page_title %}
@@ -76,36 +77,36 @@ Dashboard
                 label: 'Ganho',
                 borderColor: "#04F06A",
                 data: [
-                    Number("{{data.income.sum.month.sum_january}}"),
-                    Number("{{data.income.sum.month.sum_february}}"),
-                    Number("{{data.income.sum.month.sum_march}}"),
-                    Number("{{data.income.sum.month.sum_april}}"),
-                    Number("{{data.income.sum.month.sum_may}}"),
-                    Number("{{data.income.sum.month.sum_june}}"),
-                    Number("{{data.income.sum.month.sum_july}}"),
-                    Number("{{data.income.sum.month.sum_august}}"),
-                    Number("{{data.income.sum.month.sum_september}}"),
-                    Number("{{data.income.sum.month.sum_octuber}}"),
-                    Number("{{data.income.sum.month.sum_november}}"),
-                    Number("{{data.income.sum.month.sum_december}}")
+                    Number("{{data.income.sum.month.sum_january|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_february|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_march|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_april|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_may|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_june|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_july|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_august|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_september|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_octuber|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_november|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_december|unlocalize}}")
                 ],
                 borderWidth: 1.8
             }, {
                 label: 'Despesa',
                 borderColor: '#FB3640',
                 data: [
-                    Number("{{data.expense.sum.month.sum_january}}"),
-                    Number("{{data.expense.sum.month.sum_february}}"),
-                    Number("{{data.expense.sum.month.sum_march}}"),
-                    Number("{{data.expense.sum.month.sum_april}}"),
-                    Number("{{data.expense.sum.month.sum_may}}"),
-                    Number("{{data.expense.sum.month.sum_june}}"),
-                    Number("{{data.expense.sum.month.sum_july}}"),
-                    Number("{{data.expense.sum.month.sum_august}}"),
-                    Number("{{data.expense.sum.month.sum_september}}"),
-                    Number("{{data.expense.sum.month.sum_octuber}}"),
-                    Number("{{data.expense.sum.month.sum_november}}"),
-                    Number("{{data.expense.sum.month.sum_december}}")
+                    Number("{{data.expense.sum.month.sum_january|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_february|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_march|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_april|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_may|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_june|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_july|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_august|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_september|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_octuber|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_november|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_december|unlocalize}}")
                 ],
                 borderWidth: 1.8
             }]
@@ -129,18 +130,18 @@ Dashboard
                 borderColor: "#f20089",
                 backgroundColor: "rgba(242, 0, 137, 0.3)",
                 data: [
-                    Number("{{data.expense.sum.month.sum_january}}"),
-                    Number("{{data.expense.sum.month.sum_february}}"),
-                    Number("{{data.expense.sum.month.sum_march}}"),
-                    Number("{{data.expense.sum.month.sum_april}}"),
-                    Number("{{data.expense.sum.month.sum_may}}"),
-                    Number("{{data.expense.sum.month.sum_june}}"),
-                    Number("{{data.expense.sum.month.sum_july}}"),
-                    Number("{{data.expense.sum.month.sum_august}}"),
-                    Number("{{data.expense.sum.month.sum_september}}"),
-                    Number("{{data.expense.sum.month.sum_octuber}}"),
-                    Number("{{data.expense.sum.month.sum_november}}"),
-                    Number("{{data.expense.sum.month.sum_december}}")
+                    Number("{{data.expense.sum.month.sum_january|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_february|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_march|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_april|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_may|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_june|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_july|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_august|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_september|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_octuber|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_november|unlocalize}}"),
+                    Number("{{data.expense.sum.month.sum_december|unlocalize}}")
                 ],
                 borderWidth: 1.8
             }]
@@ -164,18 +165,18 @@ Dashboard
                 borderColor: "#85BB65",
                 backgroundColor: "rgba(133, 187, 101, 0.3)",
                 data: [
-                    Number("{{data.income.sum.month.sum_january}}"),
-                    Number("{{data.income.sum.month.sum_february}}"),
-                    Number("{{data.income.sum.month.sum_march}}"),
-                    Number("{{data.income.sum.month.sum_april}}"),
-                    Number("{{data.income.sum.month.sum_may}}"),
-                    Number("{{data.income.sum.month.sum_june}}"),
-                    Number("{{data.income.sum.month.sum_july}}"),
-                    Number("{{data.income.sum.month.sum_august}}"),
-                    Number("{{data.income.sum.month.sum_september}}"),
-                    Number("{{data.income.sum.month.sum_octuber}}"),
-                    Number("{{data.income.sum.month.sum_november}}"),
-                    Number("{{data.income.sum.month.sum_december}}")
+                    Number("{{data.income.sum.month.sum_january|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_february|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_march|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_april|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_may|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_june|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_july|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_august|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_september|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_octuber|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_november|unlocalize}}"),
+                    Number("{{data.income.sum.month.sum_december|unlocalize}}")
                 ],
                 borderWidth: 1.8
             }]

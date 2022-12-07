@@ -10,11 +10,11 @@
             <p class="fw-bold text-secondary m-0">PATRIMÔNIO</p>
             {% if overview.equity < 0 %}
                 <p class="fw-bold text-danger">
-                    <span title="Unidades monetárias" class="badge bg-danger rounded-pill shadow-sm">$</span> {{overview.equity}}
+                    <span title="Unidades monetárias" class="badge bg-danger rounded-pill shadow-sm">$</span> {{overview.equity|floatformat:2}}
                 </p>
             {% else %}
                 <p class="fw-bold text-success">
-                    <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.equity}}
+                    <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.equity|floatformat:2}}
                 </p>
             {% endif %}
         </div>
@@ -22,14 +22,14 @@
         <div class="col-4">
             <p class="font-primary fw-bold text-secondary m-0">ATIVO</p>
             <p class="fw-bold text-success">
-                <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.assets}}
+                <span title="Unidades monetárias" class="badge bg-success rounded-pill">$</span> {{overview.assets|floatformat:2}}
             </p>
         </div>
 
         <div class="col-4">
             <p class="font-primary fw-bold text-secondary m-0">PASSIVO</p>
             <p class="fw-bold text-danger">
-                <span title="Unidades monetárias" class="badge bg-danger rounded-pill">$</span> {{overview.liabilities}}
+                <span title="Unidades monetárias" class="badge bg-danger rounded-pill">$</span> {{overview.liabilities|floatformat:2}}
             </p>
         </div>
 
